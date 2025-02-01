@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw
 import numpy as np
 import os
 
-# random shit starts
+# binary shit lol
 def load_and_preprocess_data():
     (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
 
@@ -16,7 +16,6 @@ def load_and_preprocess_data():
     x_test = x_test.reshape(-1, 28, 28, 1)
 
     return (x_train, y_train), (x_test, y_test)
-# random shit ends
 
 def build_model():
     model = keras.Sequential([
@@ -114,7 +113,7 @@ class MinimalDrawingApp:
 
     def open_drawing_grid(self):
         grid_window = tk.Toplevel(self.root)
-        grid_window.title("Draw a Number")
+        grid_window.title("Draw a Number (doesnt work LMAO)")
         grid_window.configure(bg="#111111")
         grid_frame = tk.Frame(grid_window, bg="#111111")
         grid_frame.pack(pady=10)
