@@ -1,3 +1,5 @@
+# REVISED code completed 30/3/25
+
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 from tensorflow import keras
@@ -5,7 +7,7 @@ from PIL import Image, ImageDraw
 import numpy as np
 import os
 
-# binary shit lol
+# binary shit lol (does not work)
 def load_and_preprocess_data():
     (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
 
@@ -17,6 +19,7 @@ def load_and_preprocess_data():
 
     return (x_train, y_train), (x_test, y_test)
 
+# main
 def build_model():
     model = keras.Sequential([
         keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),
@@ -33,6 +36,7 @@ def build_model():
 
     return model
 
+#training
 def train_and_evaluate():
     (x_train, y_train), (x_test, y_test) = load_and_preprocess_data()
     model = build_model()
@@ -42,6 +46,7 @@ def train_and_evaluate():
     model.save("digit_recognition_model_binary.h5")
     messagebox.showinfo("Training Complete", "Model trained and saved as 'digit_recognition_model_binary.h5'")
 
+# reading the img
 def preprocess_image(img_path):
     img = Image.open(img_path).convert('L')
     img = img.resize((28, 28))
@@ -50,6 +55,7 @@ def preprocess_image(img_path):
     img_array = img_array.reshape(1, 28, 28, 1)
     return img_array
 
+# binary shit (does not work)
 def preprocess_drawing(input_grid):
     img = Image.new('L', (28, 28), color=255)
     draw = ImageDraw.Draw(img)
@@ -70,6 +76,7 @@ class MinimalDrawingApp:
 
         self.create_main_ui()
 
+    # u and i
     def create_main_ui(self):
         self.title_label = tk.Label(self.root, text="demon's CNN", font=("Helvetica", 24), fg="white", bg="#111111")
         self.title_label.pack(pady=20)
